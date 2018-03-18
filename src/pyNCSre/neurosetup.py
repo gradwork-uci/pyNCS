@@ -388,7 +388,7 @@ class NeuroSetup(object):
         self.load(self.setupfile, offline = self.offline, validate = self.validate)
         self.update()
 
-    def _pre_process(self, stim):
+    def _pre_process(self, stim, file=None):
         if stim is None:
             stim = self.sequencers
         evs_in = self.mon.exportAER(stim, isi=True)
@@ -441,6 +441,12 @@ class NeuroSetup(object):
         '''
         stim_evs = self._pre_process(stim)
         #run rec for run and record (consider using run for recording TODO)
+        try:
+            if ( kwargs['spikefile'] is not None ):
+                self.communicator.send_transfer(kwargs['spikefile'])
+        except:
+            pass
+            
         evs = self.communicator.run_rec(stim_evs, **kwargs)
         return self._post_process(evs, self.monitors.channels)
 
