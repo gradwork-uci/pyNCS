@@ -460,6 +460,8 @@ class Population(object):
         """
         self.__populate_init__(setup, chipid, neurontype)
         try:
+#             print('chipid {}'.format(chipid))
+#             print('addresses {}'.format(id_list))
             self.soma.populate_line(
                 setup, chipid, grouptype='out', addresses=id_list)
         except Exception as e:

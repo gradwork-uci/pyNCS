@@ -443,7 +443,7 @@ class NeuroSetup(object):
         #run rec for run and record (consider using run for recording TODO)
         try:
             if ( kwargs['spikefile'] is not None ):
-                self.communicator.send_transfer(kwargs['spikefile'])
+                self.communicator.send_transfer(stim_evs, kwargs['spikefile'])
         except:
             pass
             
