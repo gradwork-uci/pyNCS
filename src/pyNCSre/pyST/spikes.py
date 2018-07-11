@@ -1755,7 +1755,9 @@ class SpikeList(object):
             length = t_stop - t_start
             set_axis_limits(subplot, t_start - 0.05 *
                 length, t_stop + 0.05 * length, min_id - 2, max_id + 2)
+
             pylab.draw()
+            return subplot
 
     #######################################################################
     ## Method to convert the SpikeList into several others format        ##
